@@ -188,17 +188,10 @@ pytest tests/
 
 For deployment instructions, please refer to the `setup.sh` script, which automates the deployment process.
 
-## Acknowledgments
-
-Special thanks to the contributors and the open-source community for their support and collaboration.
-
----
-
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
----
 
 ## Fun Fact
 
