@@ -27,50 +27,146 @@ README Generator is a Flask application designed to create comprehensive README.
 
 ## Installation
 
-To install and run the README Generator, follow these steps:
+### Prerequisites
 
-1. **Clone the Repository**:
+- Python 3.8 or later
+- OpenRouter API key (free tier available)
+
+### Quick Setup
+
+1. Clone or download the project files
+2. Run the setup script:
    ```bash
-   git clone https://github.com/yourusername/readme-generator.git
-   cd readme-generator
+   chmod +x setup.sh
+   ./setup.sh
    ```
 
-2. **Set Up a Virtual Environment**:
+### Manual Setup
+
+1. Create a virtual environment:
    ```bash
    python3 -m venv venv
    source venv/bin/activate
    ```
 
-3. **Install Dependencies**:
+2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Configure the Application**:
-   - Copy `config.example.json` to `config.json`.
-   - Modify `config.json` with your specific settings.
-
-5. **Run the Application**:
+3. Set up your API key:
    ```bash
-   python main.py
+   cp .env.example .env
+   # Edit .env and add your OpenRouter API key
    ```
 
 ## Usage
 
-To generate a README.md file for a GitHub repository, use the following command:
+### Basic Usage
+
+Generate a README for any GitHub repository:
 
 ```bash
-python main.py --repo-url <GitHub Repository URL>
+python main.py https://github.com/user/repository-name
+```
+
+### Advanced Usage
+
+```bash
+# Specify output file
+python main.py https://github.com/user/repo --output my-readme.md
+
+# Use custom configuration
+python main.py https://github.com/user/repo --config custom-config.json
+
+# Enable verbose logging
+python main.py https://github.com/user/repo --verbose
+
+# Combination of options
+python main.py https://github.com/user/repo \
+  --output generated-readme.md \
+  --config config.json \
+  --verbose
+```
+
+### Help
+
+```bash
+python main.py --help
+```
+
+## Project Structure
+
+```
+readme-generator/
+├── main.py                 # Main application entry point
+├── src/
+│   ├── __init__.py
+│   ├── config.py          # Configuration management
+│   ├── github_analyzer.py # GitHub repository analysis
+│   ├── readme_generator.py # AI-powered README generation
+│   ├── models.py          # Data models and structures
+│   └── utils.py           # Utility functions
+├── requirements.txt       # Python dependencies
+├── setup.sh              # Setup script
+├── .env.example          # Environment variables example
+├── config.example.json   # Configuration file example
+└── README.md             # This file
 ```
 
 ## Configuration
 
-The application can be configured using the `config.json` file. Key configuration options include:
+### Environment Variables
 
-- `model_name`: The AI model to use for analysis.
-- `api_base_url`: The base URL for the API.
-- `max_file_size`: Maximum file size for analysis.
-- `include_*`: Boolean flags to include various sections in the README.
+Create a `.env` file with your OpenRouter API key:
+
+```env
+OPENROUTER_API_KEY=your_api_key_here
+MODEL_NAME=openai/gpt-4o  # Optional: override default model
+```
+
+### Configuration File
+
+Create a custom configuration file (JSON format):
+
+```json
+{
+  "model_name": "openai/gpt-4o",
+  "max_file_size": 100000,
+  "max_files": 50,
+  "include_badges": true,
+  "include_toc": true,
+  "request_timeout": 30
+}
+```
+
+## How It Works
+
+1. **Repository Analysis**: The tool fetches repository information from GitHub's API, including:
+   - Repository metadata (name, description, stars, etc.)
+   - File structure and content
+   - Language statistics
+   - Configuration files
+   - Existing documentation
+
+2. **Content Analysis**: It analyzes the code to understand:
+   - Project type and framework
+   - Dependencies and requirements
+   - Main entry points
+   - Configuration patterns
+
+3. **AI Generation**: Using OpenRouter's GPT-4, it generates:
+   - Project description and features
+   - Installation instructions
+   - Usage examples
+   - API documentation
+   - Contributing guidelines
+
+4. **Post-processing**: The generated content is refined with:
+   - Proper Markdown formatting
+   - Relevant badges
+   - Table of contents
+   - Link validation
 
 ## Contributing
 
@@ -95,6 +191,12 @@ For deployment instructions, please refer to the `setup.sh` script, which automa
 ## Acknowledgments
 
 Special thanks to the contributors and the open-source community for their support and collaboration.
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
 
