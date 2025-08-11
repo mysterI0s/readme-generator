@@ -1,0 +1,15 @@
+# README Generator Dependencies
+# Core HTTP client for async requests
+aiohttp>=3.9.0
+python-dotenv>=1.0.1
+
+# JSON handling (included in Python 3.7+)
+# No additional JSON library needed
+
+# Development dependencies (optional)
+# Uncomment for development
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.0.0
