@@ -94,10 +94,6 @@ pytest tests/
 
 For deployment instructions, please refer to the `setup.sh` script, which automates the deployment process.
 
-## License
-
-This project does not currently include a license file. Please ensure compliance with any relevant legal requirements when using this software.
-
 ## Acknowledgments
 
 Special thanks to the contributors and the open-source community for their support and collaboration.
