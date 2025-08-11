@@ -79,6 +79,7 @@ class Config:
     request_timeout: int = 30
     max_retries: int = 3
     retry_delay: float = 1.0
+    max_tokens: int = 2000  # Max completion tokens for OpenRouter responses
 
     @classmethod
     def load(cls, config_path: Optional[str] = None) -> "Config":
@@ -110,6 +111,14 @@ class Config:
             else:
                 logger.warning(f"Config file not found: {config_path}")
 
+        # Load select overrides from environment variables
+        max_tokens_env = os.getenv("MAX_TOKENS")
+        if max_tokens_env:
+            try:
+                config.max_tokens = int(max_tokens_env)
+            except ValueError:
+                logger.warning("Invalid MAX_TOKENS value; using default")
+
         # Validation
         if not config.openrouter_api_key:
             logger.warning("OpenRouter API key not set")
@@ -136,6 +145,7 @@ class Config:
             "request_timeout": self.request_timeout,
             "max_retries": self.max_retries,
             "retry_delay": self.retry_delay,
+            "max_tokens": self.max_tokens,
         }
 
     def save(self, config_path: str) -> None:

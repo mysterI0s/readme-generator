@@ -239,7 +239,7 @@ Generate a complete, professional README.md file:
                 },
                 {"role": "user", "content": prompt},
             ],
-            "max_tokens": 4000,
+            "max_tokens": int(self.config.max_tokens),
             "temperature": 0.3,
             "top_p": 0.9,
         }

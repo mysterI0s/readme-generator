@@ -3,6 +3,7 @@
     "api_base_url": "https://openrouter.ai/api/v1",
     "max_file_size": 100000,
     "max_files": 50,
+    "max_tokens": 3000,
     "readme_template": "comprehensive",
     "include_badges": true,
     "include_toc": true,

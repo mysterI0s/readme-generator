@@ -14,7 +14,12 @@ from typing import Optional
 from src.config import Config
 from src.github_analyzer import GitHubAnalyzer
 from src.readme_generator import ReadmeGenerator
-from src.utils import setup_logging, validate_github_url
+from src.utils import (
+    setup_logging,
+    validate_github_url,
+    extract_repo_info,
+    sanitize_filename,
+)
 
 
 def parse_arguments() -> argparse.Namespace:
@@ -97,11 +102,25 @@ async def main() -> int:
             logger.error("Failed to generate README content")
             return 1
 
-        # Write to file
-        output_path = Path(args.output)
+        # Determine output path. If default is used, place under 'readmes/readme-<repo>.md'
+        if args.output == "README.md":
+            owner_repo = extract_repo_info(args.repo_url)
+            if owner_repo:
+                _, repo_name = owner_repo
+                safe_repo_name = sanitize_filename(repo_name)
+                output_dir = Path("readmes")
+                output_dir.mkdir(parents=True, exist_ok=True)
+                output_path = output_dir / f"readme-{safe_repo_name}.md"
+            else:
+                output_dir = Path("readmes")
+                output_dir.mkdir(parents=True, exist_ok=True)
+                output_path = output_dir / "readme-output.md"
+        else:
+            output_path = Path(args.output)
+
         output_path.write_text(readme_content, encoding="utf-8")
 
-        logger.info(f"README.md successfully generated: {output_path.absolute()}")
+        logger.info(f"README successfully generated: {output_path.absolute()}")
         return 0
 
     except KeyboardInterrupt:
