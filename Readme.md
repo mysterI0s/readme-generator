@@ -100,4 +100,10 @@ Special thanks to the contributors and the open-source community for their suppo
 
 ---
 
+## Fun Fact
+
+This Readme file was created with this repository
+
+---
+
 This README.md file provides a comprehensive overview of the README Generator project, guiding users through installation, usage, and contribution processes. For further details, please refer to the source code and configuration files.
