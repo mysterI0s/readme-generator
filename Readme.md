@@ -1,5 +1,3 @@
-# README.md
-
 # README Generator
 
 README Generator is a Flask application designed to create comprehensive README.md files by analyzing GitHub repositories. This tool leverages AI to generate detailed documentation that helps users understand, install, and utilize software projects effectively.
@@ -102,7 +100,7 @@ Special thanks to the contributors and the open-source community for their suppo
 
 ## Fun Fact
 
-This Readme file was created with this repository
+This Readme file was created with this repository.
 
 ---
 
