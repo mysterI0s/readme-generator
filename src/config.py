@@ -1,8 +1,3 @@
-"""
-Configuration module for README Generator
-Handles environment variables, config files, and application settings
-"""
-
 import json
 import os
 from dataclasses import dataclass, field

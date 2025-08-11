@@ -1,8 +1,3 @@
-"""
-GitHub Repository Analyzer
-Analyzes GitHub repositories to extract structure and content information
-"""
-
 import asyncio
 import logging
 import re

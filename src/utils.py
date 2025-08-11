@@ -1,8 +1,3 @@
-"""
-Utility functions for the README generator
-Common helper functions and validators
-"""
-
 import logging
 import re
 import sys

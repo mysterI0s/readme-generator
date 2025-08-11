@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-"""
-README Generator - Main Application
-Generates comprehensive README.md files by analyzing GitHub repositories
-"""
-
 import argparse
 import asyncio
 import logging

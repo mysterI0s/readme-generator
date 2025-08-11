@@ -1,8 +1,3 @@
-"""
-README Generator Module
-Uses OpenRouter AI to generate comprehensive README.md content
-"""
-
 import asyncio
 import json
 import logging

@@ -1,8 +1,3 @@
-"""
-Data models for the README generator
-Defines the structure for repository data and related objects
-"""
-
 from dataclasses import dataclass
 from typing import Dict, List, Optional, Any
 
